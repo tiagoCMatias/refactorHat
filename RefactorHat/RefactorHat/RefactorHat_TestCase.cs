@@ -11,22 +11,16 @@ using NUnit.Framework;
 namespace RefactorHat
 {
     [TestFixture]
-    class RefactorHat_TestCase
+    class RefactorHatTestCase
     {
-
-
+        [Test]
         public void StartTimer_clickOnStartBtn_toStartTimer()
         {
-            var wasCalled = false;
-
             MainWindow testWindow = new MainWindow();
 
-            testWindow.StartTimerBtn.Click += testWindow.StartTimerBtn_Click;
+            testWindow.StartTimer();
 
-            testWindow.StartTimerBtn.Click += (sender, args) => wasCalled = true;
-
-            Assert.True(wasCalled);
-
+            Assert.IsTrue(testWindow.IsTimerRunning());
         }
     }
 }

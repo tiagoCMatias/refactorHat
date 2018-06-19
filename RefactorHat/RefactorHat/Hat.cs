@@ -45,11 +45,11 @@ namespace RefactorHat
 
         public string TimerValue()
         {
-            if (_stopWatch != null)
-                return TimeSpan.Parse(_stopWatch.Elapsed.ToString()).TotalSeconds
-                    .ToString(CultureInfo.InvariantCulture);
-            else
+            if (_stopWatch == null)
                 return "0";
+
+            return TimeSpan.Parse(_stopWatch.Elapsed.ToString()).TotalSeconds
+                .ToString(CultureInfo.InvariantCulture);
         }
     }
 }

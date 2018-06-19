@@ -50,6 +50,20 @@ namespace RefactorHat
             
         }
 
+        public String MainTimerValue()
+        {
+            if (_stopWatch == null)
+                return "0";
+
+            return TimeSpan.Parse(_stopWatch.Elapsed.ToString()).TotalSeconds
+                .ToString(CultureInfo.InvariantCulture);
+        }
+
+        public bool IsTimerRunning()
+        {
+            return _mainTimer.IsEnabled;
+        }
+
         //Application Timer
         public void StartTimer()
         {
@@ -76,13 +90,33 @@ namespace RefactorHat
 
         private void RedHatBtn_Click(object sender, RoutedEventArgs e)
         {
+            StartRedHat();
+        }
+
+        private void GreenHatBtn_Click(object sender, RoutedEventArgs e)
+        {
+            StartGreenHat();
+        }
+
+        private void RefactorHatBtn_Click(object sender, RoutedEventArgs e)
+        {
+            StartRefactorHat();
+        }
+
+        public void StartTimerBtn_Click(object sender, RoutedEventArgs e)
+        {
+            StartTimer();
+        }
+
+        public void StartRedHat()
+        {
             _redHat.StartTimer();
             _greenHat.StopTimer();
             _refactorHat.StopTimer();
             STATE = HAT_STATE_RED;
         }
 
-        private void GreenHatBtn_Click(object sender, RoutedEventArgs e)
+        public void StartGreenHat()
         {
             _greenHat.StartTimer();
             _redHat.StopTimer();
@@ -90,17 +124,12 @@ namespace RefactorHat
             STATE = HAT_STATE_GREEN;
         }
 
-        private void RefactorHatBtn_Click(object sender, RoutedEventArgs e)
+        public void StartRefactorHat()
         {
             _refactorHat.StartTimer();
             _greenHat.StopTimer();
             _redHat.StopTimer();
             STATE = HAT_STATE_REFACTOR;
-        }
-
-        public void StartTimerBtn_Click(object sender, RoutedEventArgs e)
-        {
-            StartTimer();
         }
     }
 }
