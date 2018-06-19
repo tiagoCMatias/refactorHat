@@ -20,19 +20,24 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.ColumnSpan="3" Grid.Row="0" HorizontalAlignment="Center"  x:Name="MainTimer" TextWrapping="Wrap" Text="MainTimer" VerticalAlignment="Top"/>
+        <!-- 1 Row -->
+        <TextBlock Grid.ColumnSpan="3" Grid.Row="0" HorizontalAlignment="Center" DataContext="MainTimerText"  x:Name="MainTimer" TextWrapping="Wrap" VerticalAlignment="Center"/>
 
-        <ComboBox Grid.ColumnSpan="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" x:Name="ProjectName_cmb"/>
+        <!-- 1 Row -->
+        <Button Grid.Row="1" Grid.Column="0" Content="Start"  HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="StartTimerBtn" Click="StartTimerBtn_Click" />
+        <ComboBox Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" x:Name="ProjectNameCmb" Margin="13,8,18,8" Width="136"/>
 
+        <!-- 1 Row -->
+        <Button Grid.Row="2" Grid.Column="0" Background="Red" x:Name="RedHatBtn" HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20" Click="RedHatBtn_Click" />
+        <TextBlock Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Center"  x:Name="RedHatTimer" Text="00:00" VerticalAlignment="Center" />
 
-        <Button Grid.Row="2" Grid.Column="0"  Content="Button" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <TextBlock Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Center"  x:Name="RedHatTimer" Text="Timer1"  />
+        <!-- 1 Row -->
+        <Button Grid.Row="3" Grid.Column="0" Background="Green"  x:Name="GreenHatBtn" HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20" Click="GreenHatBtn_Click"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"  x:Name="GreenHatTimer" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Center"/>
 
-        <Button Grid.Row="3" Grid.Column="0" Content="Button" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"  x:Name="GreenHatTimer" TextWrapping="Wrap" Text="Timer2" VerticalAlignment="Top"/>
-
-        <Button Grid.Row="4" Grid.Column="0" Content="Button" HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" x:Name="RefactorHatTimer"  TextWrapping="Wrap" Text="Timer3" VerticalAlignment="Top"/>
+        <!-- 1 Row -->
+        <Button Grid.Row="4" Grid.Column="0" Background="YellowGreen"  x:Name="RefactorHatBtn" HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20" Click="RefactorHatBtn_Click"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" x:Name="RefactorHatTimer"  TextWrapping="Wrap" Text="00:00" VerticalAlignment="Center"/>
 
 
 
