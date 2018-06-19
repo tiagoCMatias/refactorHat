@@ -1,0 +1,40 @@
+﻿<Window x:Class="RefactorHat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RefactorHat"
+        mc:Ignorable="d"
+        Title="RefactorHat" Height="224" Width="260">
+    <Grid VerticalAlignment="Top" HorizontalAlignment="Left" ShowGridLines="True" Height="192" Width="250">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.ColumnSpan="3" Grid.Row="0" HorizontalAlignment="Center"  x:Name="MainTimer" TextWrapping="Wrap" Text="MainTimer" VerticalAlignment="Top"/>
+
+        <ComboBox Grid.ColumnSpan="3" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" x:Name="ProjectName_cmb"/>
+
+
+        <Button Grid.Row="2" Grid.Column="0"  Content="Button" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <TextBlock Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Center"  x:Name="RedHatTimer" Text="Timer1"  />
+
+        <Button Grid.Row="3" Grid.Column="0" Content="Button" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"  x:Name="GreenHatTimer" TextWrapping="Wrap" Text="Timer2" VerticalAlignment="Top"/>
+
+        <Button Grid.Row="4" Grid.Column="0" Content="Button" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" x:Name="RefactorHatTimer"  TextWrapping="Wrap" Text="Timer3" VerticalAlignment="Top"/>
+
+
+
+    </Grid>
+</Window>
