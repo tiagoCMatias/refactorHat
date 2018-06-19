@@ -25,29 +25,16 @@ namespace RefactorHat
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        private String HAT_STATE_RED = "RED";
-        private String HAT_STATE_GREEN = "GREEN";
-        private String HAT_STATE_REFACTOR = "REFACTOR";
         private DispatcherTimer _mainTimer;
         private Stopwatch _stopWatch;
 
         public String MainTimerText;
 
-        public String STATE = "NO_STATE";
-
-        private Hat _redHat;
-        private Hat _greenHat;
-        private Hat _refactorHat;
-
+        private HatUser User;
 
         public MainWindow()
         {
-            _redHat = new Hat("Red Hat");
-            _greenHat = new Hat("Green Hat");
-            _refactorHat = new Hat("Refactor Hat");
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
 
         public String MainTimerValue()
@@ -83,53 +70,30 @@ namespace RefactorHat
         {
             MainTimerText = TimeSpan.Parse(_stopWatch.Elapsed.ToString()).TotalSeconds.ToString(CultureInfo.InvariantCulture);
             Debug.WriteLine("Main " + MainTimerText);
-            Debug.WriteLine("Red Hat " + _redHat.TimerValue());
-            Debug.WriteLine("Green Hat " + _greenHat.TimerValue());
-            Debug.WriteLine("Refactor Hat " + _refactorHat.TimerValue());
+            
         }
 
         private void RedHatBtn_Click(object sender, RoutedEventArgs e)
         {
-            StartRedHat();
+            User.PutOnRedHat();
         }
 
         private void GreenHatBtn_Click(object sender, RoutedEventArgs e)
         {
-            StartGreenHat();
+            User.PutOnGreenHat();
         }
 
         private void RefactorHatBtn_Click(object sender, RoutedEventArgs e)
         {
-            StartRefactorHat();
+            User.PutOnRefactorHat();
         }
 
         public void StartTimerBtn_Click(object sender, RoutedEventArgs e)
         {
+            User = new HatUser("Ola");
             StartTimer();
         }
 
-        public void StartRedHat()
-        {
-            _redHat.StartTimer();
-            _greenHat.StopTimer();
-            _refactorHat.StopTimer();
-            STATE = HAT_STATE_RED;
-        }
-
-        public void StartGreenHat()
-        {
-            _greenHat.StartTimer();
-            _redHat.StopTimer();
-            _refactorHat.StopTimer();
-            STATE = HAT_STATE_GREEN;
-        }
-
-        public void StartRefactorHat()
-        {
-            _refactorHat.StartTimer();
-            _greenHat.StopTimer();
-            _redHat.StopTimer();
-            STATE = HAT_STATE_REFACTOR;
-        }
+       
     }
 }
