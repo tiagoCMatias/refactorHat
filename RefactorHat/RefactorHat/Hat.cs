@@ -20,6 +20,10 @@ namespace RefactorHat
         {
             _hatName = name;
             _stopWatch = new Stopwatch();
+            _timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(500)
+            };
         }
 
         public String GetHatName()
@@ -27,12 +31,14 @@ namespace RefactorHat
             return _hatName;
         }
 
+        public bool IsActive()
+        {
+            return _timer.IsEnabled;
+        }
+
         public void StartTimer()
         {
-            _timer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromSeconds(1)
-            };            
+                    
             _stopWatch.Start();
             _timer.Start();
         }
@@ -48,8 +54,7 @@ namespace RefactorHat
             if (_stopWatch == null)
                 return "0";
 
-            return TimeSpan.Parse(_stopWatch.Elapsed.ToString()).TotalSeconds
-                .ToString(CultureInfo.InvariantCulture);
+            return TimeSpan.FromSeconds(_stopWatch.Elapsed.TotalSeconds).ToString(@"hh\:mm\:ss");
         }
     }
 }

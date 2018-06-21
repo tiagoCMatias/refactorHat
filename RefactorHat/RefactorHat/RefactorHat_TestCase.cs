@@ -14,38 +14,57 @@ namespace RefactorHat
     [TestFixture]
     class RefactorHatTestCase
     {
-        private HatUser User;
+        private HatUser _user;
 
         [SetUp]
         public void Init()
         {
-            User = new HatUser("testUser");
+            _user = new HatUser("testUser");
         }
 
         [Test]
         public void PutOnRedHat_UserPutOnRedHat_GreenHatIsZero()
         {
-            User.PutOnRedHat();
-            var timerValue = float.Parse(User.GetGreenHatTimerValue(), CultureInfo.InvariantCulture);
+            _user.PutOnRedHat();
+            var timerValue = float.Parse(_user.GetGreenHatTimerValue(), CultureInfo.InvariantCulture);
             Assert.AreEqual(timerValue, 0);
         }
 
         [Test]
         public void PutOnRedHat_UserPutOnRedHat_RefactorHatIsZero()
         {
-            User.PutOnRedHat();
-            // Parse Doesnt Recognize "."
-            var timerValue = float.Parse(User.GetRefactorHatTimerValue(), CultureInfo.InvariantCulture);
+            _user.PutOnRedHat();
+            var timerValue = float.Parse(_user.GetRefactorHatTimerValue(), CultureInfo.InvariantCulture);
             Assert.AreEqual(timerValue, 0);
         }
 
         [Test]
         public void PutOnRedHat_UserPutOnRedHat_RedHatIsNotZero()
         {
-            User.PutOnRedHat();
-            // Parse Doesnt Recognize "."
-            var timerValue = float.Parse(User.GetRedHatTimerValue(), CultureInfo.InvariantCulture);
+            _user.PutOnRedHat();
+            var timerValue = float.Parse(_user.GetRedHatTimerValue(), CultureInfo.InvariantCulture);
             Assert.IsTrue(timerValue > 0);
+        }
+
+        [Test]
+        public void IsRedHatActive_OnlyOneHatActive_ReturnTrue()
+        {
+            _user.PutOnRedHat();
+            Assert.IsTrue(_user.IsRedHatActive());
+        }
+
+        [Test]
+        public void GreenHatActive_OnlyOneHatActive_ReturnTrue()
+        {
+            _user.PutOnGreenHat();
+            Assert.IsTrue(_user.IsGreenHatActive());
+        }
+
+        [Test]
+        public void RefactorHatActive_OnlyOneHatActive_ReturnTrue()
+        {
+            _user.PutOnRefactorHat();
+            Assert.IsTrue(_user.IsRefactorHatActive());
         }
     }
 }

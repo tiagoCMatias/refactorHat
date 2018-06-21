@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RefactorHat
 {
-    class HatUser
+    public class HatUser
     {
         private String _username;
 
@@ -31,6 +31,21 @@ namespace RefactorHat
         public String GetName()
         {
             return _username;
+        }
+
+        public bool IsRedHatActive()
+        {
+            return (_redHat.IsActive() && (!_greenHat.IsActive()) && (!_refactorHat.IsActive())) ? true : false;  
+        }
+
+        public bool IsRefactorHatActive()
+        {
+            return (!_redHat.IsActive() && (!_greenHat.IsActive()) && (_refactorHat.IsActive())) ? true : false;
+        }
+
+        public bool IsGreenHatActive()
+        {
+            return (!_redHat.IsActive() && (_greenHat.IsActive()) && (!_refactorHat.IsActive())) ? true : false;
         }
 
         public void PutOnRedHat()
